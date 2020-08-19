@@ -1,0 +1,18 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<head>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="../assets/js/bootstrap.min.js"></script>
+</head>
+<app-header *ngIf="auth.getToken()"></app-header>
+<div [class.container]="auth.getToken()" [class.mt-5]="auth.getToken()" [class.pt-3]="auth.getToken()">
+  <router-outlet></router-outlet>
+</div>
+<ngx-spinner></ngx-spinner>

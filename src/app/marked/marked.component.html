@@ -1,0 +1,28 @@
+<div *ngFor="let pap of marked" class="card p-4 mb-2">
+  <div>
+    <div class="row">
+      <div class="col-8">
+        <span class="h3">{{pap.data().teamName}}</span>
+      </div>
+      <div class="col-4 text-right">
+        <span class="h3">{{pap.data().total*5}}%</span>
+      </div>
+    </div>
+    <hr>
+    <div>{{pap.data().creativity | number: '2.0-0'}}/03 for Problem definition and structuring</div>
+    <div>{{pap.data().feasibility | number: '2.0-0'}}/03 for Communications</div>
+    <div>{{pap.data().innovativeness | number: '2.0-0'}}/03 for Presentation</div>
+    <div>{{pap.data().requirement | number: '2.0-0'}}/06 for Problem solving</div>
+    <div>{{pap.data().channels | number: '2.0-0'}}/05 for Recommendation</div>
+  </div>
+  <div class="row">
+    <button class="btn btn-primary w-100 mt-3 mt-md-3 col-md-6" [routerLink]="['/mark',pap.id]">Edit</button>
+    <button class="btn btn-danger w-100 mt-1 mt-md-3 col-md-6" (click)="delete(pap.id)">Delete</button>
+  </div>
+</div>
+
+<div class="w-100 text-center mt-5" *ngIf="!marked || !marked.length > 0">
+  No teams have been evaluated by you...
+</div>
+
+

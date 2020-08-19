@@ -1,0 +1,85 @@
+<div class="container" *ngIf="markForm">
+  <div class="w-100">
+    <form [formGroup]="markForm">
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <label for="teamName">Team name</label><br>
+          <small>Name of the team to be evaluated</small>
+          <input *ngIf="!updateData" type="text" class="form-control" id="teamName" formControlName="teamName">
+          <span *ngIf="updateData" class="h4"><br>{{markForm.get('teamName').value}}</span>
+        </div>
+        <div class="col-md-6 form-group">
+          <label for="Evaluator">Name of the evaluator</label><br>
+          <small>Please input the name of the evaluator</small>
+          <input *ngIf="!updateData" type="text" class="form-control" id="evaluator" formControlName="evaluator">
+          <span *ngIf="updateData" class="h4"><br>{{markForm.get('evaluator').value}}</span>
+        </div>
+      </div>
+      <div id="accordion">
+        <div class="card mb-2" *ngFor="let criteria of criterias; let i=index">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-8">
+                <span class="h4">{{criteria.name}}</span><br>
+              </div>
+              <div class="col-4 form-group">
+                <input type="number" class="form-control" min="0" max="{{criteria.marks}}"
+                       formControlName="{{criteria.formName}}">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-8">
+                <button class="btn btn-outline-primary" (click)="toggle(a,i)">
+                  <span *ngIf="criteria.visible">Hide</span>
+                  <span *ngIf="!criteria.visible">Show</span>
+                  guidelines
+                </button>
+              </div>
+              <div class="col-4">
+                <span class="h6">Maximum points : {{criteria.marks}} <br></span>
+              </div>
+            </div>
+          </div>
+          <div id="collapseTwo" class="collapse" data-parent="#accordion" #a>
+            <div class="card-body">
+              <span>{{criteria.description}}</span>
+              <ol type="a">
+                <li *ngFor="let point of criteria.number1">
+                  {{point}}
+                </li>
+              </ol>
+              <ul>
+                <b>
+                <li *ngFor="let point of criteria.bullet1">
+                  {{point}}
+                </li>
+                </b>
+              </ul>
+              <ol type="a" start="2">
+                <li *ngFor="let point of criteria.number2">
+                  {{point}}
+                </li>
+              </ol>
+              <ul>
+                <b>
+                <li *ngFor="let point of criteria.bullet2">
+                  {{point}}
+                </li>
+                </b>
+              </ul>
+              <ol type="a" start="4">
+                <li *ngFor="let point of criteria.number3">
+                  {{point}}
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4 w-100 text-center mb-4">
+        <button type="button" class="btn btn-primary w-100" [disabled]="!markForm.valid" (click)="submit()">Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
