@@ -367,7 +367,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md bg-dark navbar-dark fixed-top justify-content-end\">\n  <!-- Brand -->\n  <a class=\"navbar-brand\" href=\"#\"><img src=\"assets/img/Logo.jpg\" width=\"60 px\"></a>\n  <button class=\"btn btn-danger ml-auto mr-1 flex-grow-0\" (click)=\"auth.revokeToken()\">Logout</button>\n\n  <!-- Toggler/collapsibe Button -->\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\" (click)=\"toggle(a)\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <!-- Navbar links -->\n  <div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\" #a>\n    <ul class=\"navbar-nav\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/mark']\" (click)=\"toggle(a)\">Mark new team</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/marked']\" (click)=\"toggle(a)\">Marked teams</a>\n      </li>\n    </ul>\n  </div>\n\n\n\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-expand-md bg-dark navbar-dark fixed-top justify-content-end\">\n  <!-- Brand -->\n  <a class=\"navbar-brand\" href=\"#\"><img src=\"assets/img/Logo_o.png\" width=\"65px\"></a>\n  <button class=\"btn btn-danger ml-auto mr-1 flex-grow-0\" (click)=\"auth.revokeToken()\">Logout</button>\n\n  <!-- Toggler/collapsibe Button -->\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapsibleNavbar\" (click)=\"toggle(a)\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <!-- Navbar links -->\n  <div class=\"collapse navbar-collapse\" id=\"collapsibleNavbar\" #a>\n    <ul class=\"navbar-nav\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/mark']\" (click)=\"toggle(a)\">Mark new team</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/marked']\" (click)=\"toggle(a)\">Marked teams</a>\n      </li>\n    </ul>\n  </div>\n\n\n\n</nav>\n"
 
 /***/ }),
 
@@ -560,7 +560,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" *ngIf=\"markForm\">\n  <div class=\"w-100\">\n    <form [formGroup]=\"markForm\">\n      <div class=\"row\">\n        <div class=\"col-md-6 form-group\">\n          <label for=\"teamName\">Team name</label><br>\n          <small>Name of the team to be evaluated</small>\n          <input *ngIf=\"!updateData\" type=\"text\" class=\"form-control\" id=\"teamName\" formControlName=\"teamName\">\n          <span *ngIf=\"updateData\" class=\"h4\"><br>{{markForm.get('teamName').value}}</span>\n        </div>\n      </div>\n\n\n      <div id=\"accordion\">\n\n        <div class=\"card mb-2\" *ngFor=\"let criteria of criterias; let i=index\">\n          <div class=\"card-header\">\n            <div class=\"row\">\n              <div class=\"col-8\">\n                <span class=\"h4\">{{criteria.name}}</span><br>\n              </div>\n              <div class=\"col-4 form-group\">\n                <input type=\"number\" class=\"form-control\" min=\"0\" max=\"{{criteria.marks}}\"\n                       formControlName=\"{{criteria.formName}}\">\n              </div>\n            </div>\n\n            <div class=\"row\">\n              <div class=\"col-8\">\n                <button class=\"btn btn-outline-primary\" (click)=\"toggle(a,i)\">\n                  <span *ngIf=\"criteria.visible\">Hide</span>\n                  <span *ngIf=\"!criteria.visible\">Show</span>\n                  guidelines\n                </button>\n              </div>\n              <div class=\"col-4\">\n                <span class=\"h6\">Maximum points : {{criteria.marks}} <br></span>\n              </div>\n            </div>\n          </div>\n          <div id=\"collapseTwo\" class=\"collapse\" data-parent=\"#accordion\" #a>\n            <div class=\"card-body\">\n              <span>{{criteria.description}}</span>\n              <ol type=\"a\">\n                <li *ngFor=\"let point of criteria.number\">\n                  {{point}}\n                </li>\n                <ul>\n                  <li *ngFor=\"let point of criteria.bullet\">\n                    {{point}}\n                  </li>\n                </ul>\n              </ol>\n              \n              \n            </div>\n          </div>\n        </div>\n\n      </div>\n\n      <div class=\"mt-4 w-100 text-center mb-4\">\n        <button type=\"button\" class=\"btn btn-primary w-100\" [disabled]=\"!markForm.valid\" (click)=\"submit()\">Submit\n        </button>\n      </div>\n    </form>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\" *ngIf=\"markForm\">\n  <div class=\"w-100\">\n    <form [formGroup]=\"markForm\">\n      <div class=\"row\">\n        <div class=\"col-md-6 form-group\">\n          <label for=\"teamName\">Team name</label><br>\n          <small>Name of the team to be evaluated</small>\n          <input *ngIf=\"!updateData\" type=\"text\" class=\"form-control\" id=\"teamName\" formControlName=\"teamName\">\n          <span *ngIf=\"updateData\" class=\"h4\"><br>{{markForm.get('teamName').value}}</span>\n        </div>\n        <div class=\"col-md-6 form-group\">\n          <label for=\"Evaluator\">Name of the evaluator</label><br>\n          <small>Please input the name of the evaluator</small>\n          <input *ngIf=\"!updateData\" type=\"text\" class=\"form-control\" id=\"evaluator\" formControlName=\"evaluator\">\n          <span *ngIf=\"updateData\" class=\"h4\"><br>{{markForm.get('evaluator').value}}</span>\n        </div>\n      </div>\n      <div id=\"accordion\">\n        <div class=\"card mb-2\" *ngFor=\"let criteria of criterias; let i=index\">\n          <div class=\"card-header\">\n            <div class=\"row\">\n              <div class=\"col-8\">\n                <span class=\"h4\">{{criteria.name}}</span><br>\n              </div>\n              <div class=\"col-4 form-group\">\n                <input type=\"number\" class=\"form-control\" min=\"0\" max=\"{{criteria.marks}}\"\n                       formControlName=\"{{criteria.formName}}\">\n              </div>\n            </div>\n            <div class=\"row\">\n              <div class=\"col-8\">\n                <button class=\"btn btn-outline-primary\" (click)=\"toggle(a,i)\">\n                  <span *ngIf=\"criteria.visible\">Hide</span>\n                  <span *ngIf=\"!criteria.visible\">Show</span>\n                  guidelines\n                </button>\n              </div>\n              <div class=\"col-4\">\n                <span class=\"h6\">Maximum points : {{criteria.marks}} <br></span>\n              </div>\n            </div>\n          </div>\n          <div id=\"collapseTwo\" class=\"collapse\" data-parent=\"#accordion\" #a>\n            <div class=\"card-body\">\n              <span>{{criteria.description}}</span>\n              <ol type=\"a\">\n                <li *ngFor=\"let point of criteria.number1\">\n                  {{point}}\n                </li>\n              </ol>\n              <ul>\n                <b>\n                <li *ngFor=\"let point of criteria.bullet1\">\n                  {{point}}\n                </li>\n                </b>\n              </ul>\n              <ol type=\"a\" start=\"2\">\n                <li *ngFor=\"let point of criteria.number2\">\n                  {{point}}\n                </li>\n              </ol>\n              <ul>\n                <b>\n                <li *ngFor=\"let point of criteria.bullet2\">\n                  {{point}}\n                </li>\n                </b>\n              </ul>\n              <ol type=\"a\" start=\"4\">\n                <li *ngFor=\"let point of criteria.number3\">\n                  {{point}}\n                </li>\n              </ol>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"mt-4 w-100 text-center mb-4\">\n        <button type=\"button\" class=\"btn btn-primary w-100\" [disabled]=\"!markForm.valid\" (click)=\"submit()\">Submit\n        </button>\n      </div>\n    </form>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -599,59 +599,69 @@ var MarkingComponent = /** @class */ (function () {
         this.criterias = [
             {
                 name: 'Problem definition and structuring',
-                formName: 'innovativeness',
+                formName: 'Problem_definition',
                 marks: 3,
                 visible: false,
-                number: [
-                    'Problem has beenclearly identified, either explicitly or implicitly',
-                    'Problem has been effectively broken down into smaller components. The componentscover most aspects needed to formulate the answer and there is minimal overlap between the indvidual components',
+                number1: [
+                    'Problem has been clearly defined, either explicitly or implicitly',
+                    'Problem has been effectively broken down into smaller components. The components cover most aspects needed to formulate the answer and there is minimal overlap between the individual components',
                 ]
             },
             {
                 name: 'Problem solving',
-                formName: 'requirement',
+                formName: 'problem_solving',
                 marks: 6,
                 visible: false,
-                number: [
-                    'The use of a hypothesis led problem solving approach is evident in the report',
-                    'The qualitative information provided has been interpreted correctly and have been used to develop logic arguments',
-                    'Creativity has been demonstrated in solving the problem',
+                number1: [
+                    'The use of a hypothesis led problem solving approach is evident in the report'
+                ],
+                bullet1: [
+                    'Conceptual'
+                ],
+                number2: [
+                    'The qualitative information provided has been interpreted correctly and have been used to develop logical arguments',
+                    'Creativity has been demonstrated in solving the problem'
+                ],
+                bullet2: [
+                    'Analytical'
+                ],
+                number3: [
                     'The data provided has been interpreted correctly and have been used correctly in supporting the solution',
-                    'Calculations are correct, relevent and of sound logic',
+                    'Calculations are correct, relevant and of sound logic',
                     'Assumptions made are of sound logic and have been clearly defined',
-                    'If external data sources have been used to supplement solution, creditable sources have been used have been apprpriately cited'
+                    'If external data sources have been used to supplement solution, credible sources have been used have been appropriately cited'
                 ]
             },
             {
                 name: 'Recommendation',
-                formName: 'channels',
+                formName: 'Recommendation',
                 marks: 5,
                 visible: false,
-                number: [
+                number1: [
                     'A sound actionable recommendation is provided backed by data and logical reasoning',
                     'Recommendation is within the scope and constraints of the problem',
                 ]
             },
             {
                 name: 'Communications',
-                formName: 'feasibility',
+                formName: 'Communication',
                 marks: 3,
                 visible: false,
-                number: [
-                    'Messeges have been effectively synthesised and communicated in a top down manner',
-                    'Coherent language has been used for text based communications(Minor spelling and grammatical errors are fine)',
-                    'Graphs and figures have been effectively usd to communicate messages',
+                number1: [
+                    ' Messages have been effectively synthesised and communicated in a top down manner',
+                    'Coherent language has been used for text based communications (Minor spelling and grammatical errors are fine)',
+                    'Graphs and figures have been effectively used to communicate messages.',
                 ]
             },
             {
                 name: 'Presentation',
-                formName: 'creativity',
+                formName: 'Presentation',
                 marks: 3,
                 visible: false,
-                number: [
+                number1: [
                     'The report format is well structured and easy to follow',
                     'The report content is concise and follows a logical progression',
-                    'The pages are easy to read: the text is appropriately sized and the figures are legible'
+                    'The pages are easy to read; the text is appropriately sized and the figures are legible'
                 ]
             }
         ];
@@ -678,12 +688,13 @@ var MarkingComponent = /** @class */ (function () {
                                 this.updateData = this.pap.data();
                                 this.markForm = this.fb.group({
                                     token: [this.auth.getToken(), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-                                    innovativeness: [this.updateData.innovativeness, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(3)]],
-                                    requirement: [this.updateData.requirement, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(6)]],
-                                    channels: [this.updateData.channels, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(5)]],
-                                    feasibility: [this.updateData.feasibility, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(3)]],
-                                    creativity: [this.updateData.creativity, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(3)]],
+                                    Problem_definition: [this.updateData.innovativeness, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(3)]],
+                                    problem_solving: [this.updateData.requirement, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(6)]],
+                                    Recommendation: [this.updateData.channels, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(5)]],
+                                    Communication: [this.updateData.feasibility, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(3)]],
+                                    Presentation: [this.updateData.creativity, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(3)]],
                                     teamName: [this.updateData.teamName, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+                                    evaluator: [this.updateData.evaluator, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
                                     total: [this.updateData.total],
                                 });
                                 this.spinner.hide();
@@ -692,12 +703,13 @@ var MarkingComponent = /** @class */ (function () {
                             case 3:
                                 this.markForm = this.fb.group({
                                     token: [this.auth.getToken(), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-                                    innovativeness: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(3)]],
-                                    requirement: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(6)]],
-                                    channels: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(5)]],
-                                    feasibility: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(3)]],
-                                    creativity: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(3)]],
+                                    Problem_definition: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(3)]],
+                                    problem_solving: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(6)]],
+                                    Recommendation: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(5)]],
+                                    Communication: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(3)]],
+                                    Presentation: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].min(0), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].max(3)]],
                                     teamName: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+                                    evaluator: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
                                     total: ['']
                                 });
                                 this.spinner.hide();
